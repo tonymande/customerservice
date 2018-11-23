@@ -21,6 +21,9 @@ spec:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
+        env:
+        - name: _JAVA_OPTIONS
+          value: "-Xmx256m"
         ports:
         - containerPort: {{ .Values.service.internalPort }}
         livenessProbe:
